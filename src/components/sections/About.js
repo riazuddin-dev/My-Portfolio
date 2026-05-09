@@ -46,14 +46,14 @@ export function About() {
         <div className="absolute left-0 md:left-0 top-[-20%] bottom-[-20%] w-[1px] bg-gradient-to-b from-transparent via-[#c49a6c]/20 to-transparent pointer-events-none hidden md:block" />
         <div className="absolute left-[-2.5px] top-[35%] -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-[#c49a6c] shadow-[0_0_15px_rgba(196,154,108,1)] hidden md:block" />
 
-        <div className="flex flex-col lg:flex-row justify-start items-center w-full max-w-[1500px] mr-auto relative gap-16 lg:gap-20 xl:gap-32 md:pl-12 lg:pl-16 xl:pl-24">
+        <div className="flex flex-col lg:flex-row justify-start items-center w-full max-w-[1280px] mr-auto relative gap-12 lg:gap-20 xl:gap-28 md:pl-12 lg:pl-16 transition-all duration-700 ease-out">
 
           {/* LEFT SIDE: Text Content */}
           <motion.div
             variants={staggerContainer}
             initial="hidden"
             animate="visible"
-            className="flex flex-col justify-center max-w-lg relative z-20"
+            className="flex flex-col justify-center max-w-[450px] shrink-0 relative z-20"
           >
             <motion.div variants={fadeUp} className="flex items-center gap-6 mb-8">
               <span className="font-mono text-[11px] tracking-[0.25em] font-medium text-[#c49a6c]">

@@ -49,7 +49,7 @@ export function Contact() {
         <div className="absolute left-[-2.5px] top-[40%] -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-[#c49a6c] shadow-[0_0_15px_rgba(196,154,108,1)] hidden md:block animate-pulse" />
 
         {/* LEFT-ANCHORED MASTER CONTAINER */}
-        <div className="flex flex-col lg:flex-row justify-start items-center w-full max-w-[1500px] mr-auto relative gap-12 lg:gap-20 xl:gap-32 md:pl-12 lg:pl-16 xl:pl-24">
+        <div className="flex flex-col lg:flex-row justify-start items-center w-full max-w-[1280px] mr-auto relative gap-12 lg:gap-20 xl:gap-28 md:pl-12 lg:pl-16 transition-all duration-700 ease-out">
 
           {/* LEFT SIDE: Text Content */}
           <motion.div
@@ -110,10 +110,6 @@ export function Contact() {
                 </div>
               </a>
 
-              {/* Social Media Links */}
-              <div className="mt-4">
-                <SocialLinks iconSize="w-11 h-11" />
-              </div>
             </motion.div>
           </motion.div>
 

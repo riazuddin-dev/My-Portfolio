@@ -118,7 +118,7 @@ export function Projects() {
         <div className="absolute left-[-2.5px] top-[30%] -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-[#c49a6c] shadow-[0_0_15px_rgba(196,154,108,1)] hidden md:block" />
         <div className="absolute left-[-2.5px] top-[60%] -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-[#c49a6c] shadow-[0_0_15px_rgba(196,154,108,1)] hidden md:block" />
 
-        <div className="flex flex-col xl:flex-row justify-start items-start xl:items-center w-full max-w-[1400px] mr-auto relative gap-12 lg:gap-16 xl:gap-24 md:pl-12 lg:pl-16 xl:pl-24">
+        <div className="flex flex-col xl:flex-row justify-start items-start xl:items-center w-full max-w-[1280px] mr-auto relative gap-12 lg:gap-16 md:pl-12 lg:pl-16 transition-all duration-700 ease-out">
 
           {/* Left Side Content */}
           <motion.div
