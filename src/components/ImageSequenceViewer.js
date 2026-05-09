@@ -80,7 +80,7 @@ export function ImageSequenceViewer() {
       </div>
 
       {/* PORTRAIT SECTION CONTAINER */}
-      <div className="absolute right-0 top-0 bottom-0 w-full md:w-[85vw] lg:w-[80vw] max-w-[1400px] z-10 pointer-events-none flex items-center justify-end">
+      <div className="absolute right-0 top-0 bottom-0 w-full md:w-[85vw] lg:w-[80vw] max-w-[1400px] z-10 pointer-events-none flex items-center justify-center md:justify-end">
         <Image
           src={getFramePath(currentFrame)}
           alt={`Cinematic portrait frame ${currentFrame}`}
@@ -89,12 +89,12 @@ export function ImageSequenceViewer() {
           unoptimized
           sizes="(max-width: 768px) 100vw, 80vw"
           className="
-            object-cover md:object-contain
-            object-[70%_20%] md:object-right
-            opacity-70 md:opacity-100
+            object-contain
+            object-center md:object-right
+            opacity-100
             mix-blend-lighten
-            [mask-image:radial-gradient(ellipse_at_70%_30%,black_30%,rgba(0,0,0,0.5)_60%,transparent_100%)]
-            [-webkit-mask-image:radial-gradient(ellipse_at_70%_30%,black_30%,rgba(0,0,0,0.5)_60%,transparent_100%)]
+            [mask-image:radial-gradient(ellipse_at_center,black_45%,rgba(0,0,0,0.6)_75%,transparent_100%)]
+            [-webkit-mask-image:radial-gradient(ellipse_at_center,black_45%,rgba(0,0,0,0.6)_75%,transparent_100%)]
             md:[mask-image:radial-gradient(ellipse_at_65%_50%,black_45%,rgba(0,0,0,0.6)_75%,transparent_100%)]
             md:[-webkit-mask-image:radial-gradient(ellipse_at_65%_50%,black_45%,rgba(0,0,0,0.6)_75%,transparent_100%)]
           "
@@ -104,13 +104,13 @@ export function ImageSequenceViewer() {
       {/* FULL SCREEN CINEMATIC OVERLAYS (Crucial for removing vertical seams) */}
       <div className="absolute inset-0 z-20 pointer-events-none">
         {/* Massive soft left haze spanning entire page to blend portrait into text background globally */}
-        <div className="absolute inset-y-0 left-0 w-[85%] md:w-[55%] bg-gradient-to-r from-[#050505] via-[#050505]/95 md:via-[#050505]/90 to-transparent" />
+        <div className="absolute inset-y-0 left-0 w-[40%] md:w-[55%] bg-gradient-to-r from-[#050505] via-[#050505]/50 md:via-[#050505]/90 to-transparent" />
 
         {/* Ambient atmospheric haze sweeping across the center, lightened to restore face visibility */}
         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#050505]/10 to-transparent" />
 
         {/* Deep bottom cinematic ground fade globally applied, reduced intensity */}
-        <div className="absolute inset-x-0 bottom-0 h-[40%] md:h-[30%] bg-gradient-to-t from-[#050505] via-[#050505]/80 md:via-[#050505]/60 to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 h-[20%] md:h-[30%] bg-gradient-to-t from-[#050505] via-[#050505]/60 to-transparent" />
 
         {/* Top ceiling fade globally applied, reduced intensity */}
         <div className="absolute inset-x-0 top-0 h-[20%] bg-gradient-to-b from-[#050505] via-[#050505]/50 to-transparent" />

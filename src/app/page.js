@@ -8,7 +8,7 @@ import { GlobalAtmosphere } from "@/components/GlobalAtmosphere";
 
 export default function Home() {
   return (
-    <main className="relative w-full h-[500vh] bg-[#050505]">
+    <main className="relative w-full min-h-[700vh] h-auto bg-[#050505] flex flex-col">
       {/* Global Cinematic Atmosphere */}
       <GlobalAtmosphere />
 

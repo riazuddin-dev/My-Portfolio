@@ -235,7 +235,9 @@ export function Contact() {
 
       {/* Footer / Social Layer */}
       <div className="absolute bottom-8 md:bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-6 md:gap-5 w-full px-6 z-20">
-        <SocialLinks iconSize="w-9 h-9" className="gap-6" />
+        <div className="hidden md:block">
+          <SocialLinks iconSize="w-9 h-9" className="gap-6" />
+        </div>
         <p className="font-mono text-[9px] tracking-[0.25em] text-white/30 uppercase text-center border-t border-white/5 pt-4 w-full max-w-[200px]">
           © {new Date().getFullYear()} RIAZ UDDIN
         </p>

@@ -102,10 +102,13 @@ const cardVariants = {
 export function Projects() {
   const { smoothProgress } = useScrollytelling();
 
-  // Range: 0.58 to 0.78
-  const opacity = useTransform(smoothProgress, [0.58, 0.65, 0.72, 0.78], [0, 1, 1, 0]);
-  const pointerEvents = useTransform(smoothProgress, (p) => (p > 0.55 && p < 0.8) ? "auto" : "none");
-  const y = useTransform(smoothProgress, [0.58, 0.78], ["5%", "-5%"]);
+  // Extend Projects section timeline visibility to give more time for scrolling cards
+  const opacity = useTransform(smoothProgress, [0.55, 0.60, 0.82, 0.87], [0, 1, 1, 0]);
+  const pointerEvents = useTransform(smoothProgress, (p) => (p > 0.55 && p < 0.87) ? "auto" : "none");
+  const y = useTransform(smoothProgress, [0.55, 0.87], ["5%", "-5%"]);
+
+  // Scroll the project cards vertically based on page scroll progress
+  const cardsY = useTransform(smoothProgress, [0.60, 0.82], ["0%", "-50%"]);
 
   return (
     <motion.section
@@ -164,7 +167,7 @@ export function Projects() {
           </motion.div>
 
           {/* Right Side Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-5 w-full xl:max-w-[780px] h-full max-h-[55vh] md:max-h-[65vh] xl:max-h-[80vh] overflow-y-auto pr-2 md:pr-4 custom-scrollbar pb-10 relative z-20 mt-4 md:mt-0">
+          <motion.div style={{ y: cardsY }} className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-5 w-full xl:max-w-[780px] pr-2 md:pr-4 pb-20 md:pb-10 relative z-20 mt-4 md:mt-0">
             {projects.map((project, index) => (
               <motion.a
                 custom={index}
@@ -234,7 +237,7 @@ export function Projects() {
                 </div>
               </motion.a>
             ))}
-          </div>
+          </motion.div>
         </div>
       </div>
 
