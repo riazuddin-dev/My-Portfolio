@@ -118,7 +118,7 @@ export function Projects() {
         <div className="absolute left-[-2.5px] top-[30%] -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-[#c49a6c] shadow-[0_0_15px_rgba(196,154,108,1)] hidden md:block" />
         <div className="absolute left-[-2.5px] top-[60%] -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-[#c49a6c] shadow-[0_0_15px_rgba(196,154,108,1)] hidden md:block" />
 
-        <div className="flex flex-col xl:flex-row justify-start items-start xl:items-center w-full max-w-[1280px] mr-auto relative gap-12 lg:gap-16 md:pl-12 lg:pl-16 transition-all duration-700 ease-out">
+        <div className="flex flex-col xl:flex-row justify-start items-start xl:items-center w-full max-w-[1280px] mr-auto relative gap-8 lg:gap-16 md:pl-12 lg:pl-16 transition-all duration-700 ease-out">
 
           {/* Left Side Content */}
           <motion.div
@@ -137,7 +137,7 @@ export function Projects() {
               </span>
             </motion.div>
 
-            <motion.h2 variants={fadeUp} className="text-[2.5rem] lg:text-[3rem] xl:text-[3.5rem] font-medium tracking-tight text-white leading-[1.1] mb-6">
+            <motion.h2 variants={fadeUp} className="text-[2rem] sm:text-[2.5rem] lg:text-[3rem] xl:text-[3.5rem] font-medium tracking-tight text-white leading-[1.1] mb-6">
               PROJECTS THAT <br />
               TELL <br />
               <span className="font-medium text-[#c49a6c] drop-shadow-[0_0_20px_rgba(196,154,108,0.5)]">MY STORY.</span>
@@ -164,7 +164,7 @@ export function Projects() {
           </motion.div>
 
           {/* Right Side Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 w-full xl:max-w-[780px] h-full max-h-[65vh] xl:max-h-[80vh] overflow-y-auto pr-4 custom-scrollbar pb-10 relative z-20">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-5 w-full xl:max-w-[780px] h-full max-h-[55vh] md:max-h-[65vh] xl:max-h-[80vh] overflow-y-auto pr-2 md:pr-4 custom-scrollbar pb-10 relative z-20 mt-4 md:mt-0">
             {projects.map((project, index) => (
               <motion.a
                 custom={index}
@@ -184,8 +184,8 @@ export function Projects() {
                 <div className="absolute bottom-0 left-0 w-8 h-8 border-b-[1px] border-l-[1px] border-[#c49a6c] rounded-bl-[16px] opacity-0 group-hover:opacity-40 transition-all duration-700 transform -translate-x-1 translate-y-1 group-hover:translate-x-0 group-hover:translate-y-0 pointer-events-none" />
                 <div className="absolute bottom-0 right-0 w-8 h-8 border-b-[1px] border-r-[1px] border-[#c49a6c] rounded-br-[16px] opacity-0 group-hover:opacity-40 transition-all duration-700 transform translate-x-1 translate-y-1 group-hover:translate-x-0 group-hover:translate-y-0 pointer-events-none" />
 
-                {/* Image Container (Left) */}
-                <div className="relative w-full sm:w-[40%] overflow-hidden bg-[#000]">
+                {/* Image Container (Top on Mobile, Left on Desktop) */}
+                <div className="relative w-full h-[180px] sm:h-auto sm:w-[40%] shrink-0 overflow-hidden bg-[#000]">
                   {/* Subtle Inner glow for image integration */}
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent to-[#050505]/90 z-10 pointer-events-none" />
                   <div className="absolute inset-0 bg-black/50 group-hover:bg-black/10 transition-colors duration-700 z-10 pointer-events-none" />

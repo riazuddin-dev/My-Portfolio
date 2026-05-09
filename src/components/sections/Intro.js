@@ -123,7 +123,7 @@ function TypewriterEffect() {
   }, [currentText, isDeleting, currentPhraseIndex]);
 
   return (
-    <span className="inline-flex items-center min-h-[28px] md:min-h-[32px] font-mono tracking-[0.1em] text-[12px] md:text-[14px] uppercase whitespace-nowrap">
+    <span className="inline-flex items-center min-h-[28px] md:min-h-[32px] font-mono tracking-[0.05em] md:tracking-[0.1em] text-[9.5px] sm:text-[11px] md:text-[14px] uppercase whitespace-nowrap">
       <motion.span 
         variants={textShimmer}
         initial="hidden"
@@ -215,7 +215,7 @@ export function Intro() {
           variants={staggerContainer}
           initial="hidden"
           animate="visible"
-          className="flex flex-col justify-center max-w-3xl md:ml-32 lg:ml-48 xl:ml-56 h-full pb-[10%]"
+          className="flex flex-col justify-center max-w-3xl md:ml-32 lg:ml-48 xl:ml-56 h-full pb-0 md:pb-[10%]"
         >
 
           <motion.div variants={fadeUpLine} className="flex items-center gap-6 mb-8 mt-[15%]">
@@ -238,7 +238,7 @@ export function Intro() {
 
           {/* Headline block - each sentence on its own clean line */}
           <div className="flex flex-col gap-2 mb-6">
-            <motion.div variants={fadeUpLine} className="text-[3.5rem] md:text-[5rem] lg:text-[5.5rem] font-light tracking-tight text-white leading-[1.1] font-sans whitespace-nowrap flex items-center">
+            <motion.div variants={fadeUpLine} className="text-[2.25rem] sm:text-[3.5rem] md:text-[5rem] lg:text-[5.5rem] font-light tracking-tight text-white leading-[1.1] font-sans whitespace-nowrap flex items-center">
               Hi 
               <div className="relative inline-flex items-center justify-center mx-2 md:mx-4">
                 {/* Waving Emoji */}
@@ -269,14 +269,14 @@ export function Intro() {
               </div>
               , I&apos;m
             </motion.div>
-            <motion.div variants={fadeUpLine} className="text-[3.5rem] md:text-[5rem] lg:text-[5.5rem] font-medium tracking-tight leading-[1.1] font-sans whitespace-nowrap relative">
+            <motion.div variants={fadeUpLine} className="text-[2.25rem] sm:text-[3.5rem] md:text-[5rem] lg:text-[5.5rem] font-medium tracking-tight leading-[1.1] font-sans whitespace-nowrap relative">
               
               {/* Backing Volumetric Haze Layer */}
               <motion.span
                 variants={textShimmer}
                 initial="hidden"
                 animate="visible"
-                className="absolute inset-0 z-0"
+                className="absolute inset-0 z-0 hidden md:block"
                 style={{
                   backgroundImage: "linear-gradient(to right, #b87333, #d4af37, #fff4e6, #ffcba4, #c87d46, #b87333)",
                   backgroundSize: "200% auto",
@@ -296,7 +296,7 @@ export function Intro() {
                 variants={textBloom}
                 initial="hidden"
                 animate="visible"
-                className="absolute inset-0 z-0 mix-blend-screen"
+                className="absolute inset-0 z-0 mix-blend-screen hidden md:block"
                 style={{
                   backgroundImage: "linear-gradient(to right, #d4af37, #ffffff, #d4af37)",
                   backgroundSize: "200% auto",
@@ -314,7 +314,7 @@ export function Intro() {
                 variants={textShimmer}
                 initial="hidden"
                 animate="visible"
-                className="relative inline-block z-10 drop-shadow-[0_0_5px_rgba(255,244,230,0.4)]"
+                className="relative inline-block z-10 drop-shadow-[0_0_8px_rgba(196,154,108,0.5)] md:drop-shadow-[0_0_5px_rgba(255,244,230,0.4)]"
                 style={{
                   backgroundImage: "linear-gradient(to right, #b87333, #d4af37, #fff4e6, #ffcba4, #c87d46, #b87333)",
                   backgroundSize: "200% auto",
@@ -358,7 +358,7 @@ export function Intro() {
       </div>
 
       {/* Bottom Left Circular Logo */}
-      <div className="absolute left-12 md:left-20 bottom-12">
+      <div className="absolute left-12 md:left-20 bottom-12 hidden md:block">
         <div className="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center text-[#c49a6c]/80 font-sans text-[10px] hover:text-[#c49a6c] hover:border-[#c49a6c]/50 hover:shadow-[0_0_15px_rgba(196,154,108,0.3)] transition-all duration-500 cursor-pointer">
           RU
         </div>

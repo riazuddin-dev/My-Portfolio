@@ -53,7 +53,7 @@ export function About() {
             variants={staggerContainer}
             initial="hidden"
             animate="visible"
-            className="flex flex-col justify-center max-w-[450px] shrink-0 relative z-20"
+            className="flex flex-col justify-center w-full lg:max-w-[450px] shrink-0 relative z-20 pt-8 md:pt-0"
           >
             <motion.div variants={fadeUp} className="flex items-center gap-6 mb-8">
               <span className="font-mono text-[11px] tracking-[0.25em] font-medium text-[#c49a6c]">
@@ -65,7 +65,7 @@ export function About() {
               </span>
             </motion.div>
 
-            <motion.h2 variants={fadeUp} className="text-[3rem] lg:text-[4rem] font-light tracking-tight text-white leading-[1.05] mb-8">
+            <motion.h2 variants={fadeUp} className="text-[2.25rem] sm:text-[3rem] lg:text-[4rem] font-light tracking-tight text-white leading-[1.05] mb-6 sm:mb-8">
               Crafting <br className="hidden md:block" /> experiences <br />
               that <span className="font-medium text-[#c49a6c] drop-shadow-[0_0_20px_rgba(196,154,108,0.5)]">connect.</span>
             </motion.h2>
@@ -87,7 +87,7 @@ export function About() {
             variants={fadeUp}
             initial="hidden"
             animate="visible"
-            className="relative w-full max-w-md shrink-0 mt-10 lg:mt-0 z-20 group perspective-1000"
+            className="relative w-full max-w-md shrink-0 mt-8 md:mt-10 lg:mt-0 z-20 group perspective-1000 mx-auto lg:mx-0"
           >
             {/* Concentric Radar Rings (Background) */}
             <div className="absolute top-1/2 -right-[60%] -translate-y-1/2 w-[600px] h-[600px] pointer-events-none z-0 hidden lg:block overflow-hidden">

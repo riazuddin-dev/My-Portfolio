@@ -18,21 +18,23 @@ export function ScrollytellingProvider({ children }) {
       gestureDirection: 'vertical',
       smooth: true,
       mouseMultiplier: 1,
-      smoothTouch: false, // Keep native touch scrolling for mobile stability
+      smoothTouch: true, // Enable for mobile smooth scrolling
       touchMultiplier: 2,
+      syncTouch: true, // Prevent scroll jitter on mobile
       infinite: false,
     });
 
-    // Optimize performance with requestAnimationFrame
+    let rafId;
     function raf(time) {
       lenis.raf(time);
-      requestAnimationFrame(raf);
+      rafId = requestAnimationFrame(raf);
     }
 
-    requestAnimationFrame(raf);
+    rafId = requestAnimationFrame(raf);
 
     // Clean up on unmount
     return () => {
+      cancelAnimationFrame(rafId);
       lenis.destroy();
     };
   }, []);

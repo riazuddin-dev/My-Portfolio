@@ -8,9 +8,9 @@ export function GlobalAtmosphere() {
       {/* Core Dark Matte Background */}
       <div className="absolute inset-0 bg-[#050505]" />
       
-      {/* Elegant Haze Diffusion & Radial Gradients (About section style) */}
-      <div className="absolute top-[-20%] left-[-10%] w-[70%] h-[70%] bg-[radial-gradient(circle_at_center,rgba(196,154,108,0.06)_0%,transparent_70%)] mix-blend-screen" />
-      <div className="absolute bottom-[-20%] right-[-10%] w-[80%] h-[80%] bg-[radial-gradient(circle_at_center,rgba(196,154,108,0.08)_0%,transparent_60%)] mix-blend-screen" />
+      {/* Elegant Haze Diffusion & Radial Gradients (About section style) - Hidden on mobile to save GPU */}
+      <div className="absolute top-[-20%] left-[-10%] w-[70%] h-[70%] bg-[radial-gradient(circle_at_center,rgba(196,154,108,0.06)_0%,transparent_70%)] mix-blend-screen hidden md:block" />
+      <div className="absolute bottom-[-20%] right-[-10%] w-[80%] h-[80%] bg-[radial-gradient(circle_at_center,rgba(196,154,108,0.08)_0%,transparent_60%)] mix-blend-screen hidden md:block" />
 
       {/* Subtle Cinematic Particles */}
       <div className="absolute inset-0 hidden md:block opacity-60 pointer-events-none">

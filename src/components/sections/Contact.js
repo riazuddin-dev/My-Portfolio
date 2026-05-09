@@ -56,7 +56,7 @@ export function Contact() {
             variants={staggerContainer}
             initial="hidden"
             animate="visible"
-            className="flex flex-col justify-center max-w-[420px] relative z-20 shrink-0"
+            className="flex flex-col justify-center w-full lg:max-w-[420px] relative z-20 shrink-0 pt-8 md:pt-0"
           >
             <motion.div variants={fadeUp} className="flex items-center gap-6 mb-8">
               <span className="font-mono text-[11px] tracking-[0.25em] font-medium text-[#c49a6c]">
@@ -68,7 +68,7 @@ export function Contact() {
               </span>
             </motion.div>
 
-            <motion.h2 variants={fadeUp} className="text-[3rem] lg:text-[4rem] font-light tracking-tight text-white leading-[1.05] mb-8">
+            <motion.h2 variants={fadeUp} className="text-[2.25rem] sm:text-[3rem] lg:text-[4rem] font-light tracking-tight text-white leading-[1.05] mb-6 sm:mb-8">
               Have a project <br />
               <span className="font-medium text-[#c49a6c] drop-shadow-[0_0_20px_rgba(196,154,108,0.5)]">in mind?</span>
             </motion.h2>
@@ -118,10 +118,10 @@ export function Contact() {
             variants={fadeUp}
             initial="hidden"
             animate="visible"
-            className="relative w-full max-w-[600px] shrink-0 z-20 group perspective-1000 mt-12 lg:mt-0"
+            className="relative w-full max-w-[600px] shrink-0 z-20 group perspective-1000 mt-8 md:mt-12 lg:mt-0 pb-16 md:pb-0"
           >
             {/* Soft Glow Behind Form */}
-            <div style={{ willChange: "opacity" }} className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[110%] h-[110%] bg-[#c49a6c]/5 blur-[80px] rounded-[30px] pointer-events-none z-0 transition-opacity duration-1000 group-hover:opacity-100 opacity-50" />
+            <div style={{ willChange: "opacity" }} className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[110%] h-[110%] bg-[#c49a6c]/5 blur-[40px] md:blur-[80px] rounded-[30px] pointer-events-none z-0 transition-opacity duration-1000 group-hover:opacity-100 opacity-50 hidden md:block" />
 
             {/* Concentric Radar Rings (Background) */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] pointer-events-none z-0 hidden lg:block overflow-hidden">
@@ -234,7 +234,7 @@ export function Contact() {
       </div>
 
       {/* Footer / Social Layer */}
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-5 w-full px-6 z-20">
+      <div className="absolute bottom-8 md:bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-6 md:gap-5 w-full px-6 z-20">
         <SocialLinks iconSize="w-9 h-9" className="gap-6" />
         <p className="font-mono text-[9px] tracking-[0.25em] text-white/30 uppercase text-center border-t border-white/5 pt-4 w-full max-w-[200px]">
           © {new Date().getFullYear()} RIAZ UDDIN

@@ -62,13 +62,13 @@ export function ImageSequenceViewer() {
       {/* MAIN CINEMATIC BACKGROUND ATMOSPHERE */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
         {/* Massive left-to-center atmospheric warm haze to ensure full-width connection */}
-        <div className="absolute top-[10%] left-[-10%] w-[1200px] h-[1200px] rounded-full bg-orange-900/15 blur-[250px] will-change-transform" />
+        <div className="absolute top-[10%] left-[-10%] w-[600px] h-[600px] md:w-[1200px] md:h-[1200px] rounded-full bg-orange-900/15 blur-[100px] md:blur-[250px] will-change-transform hidden md:block" />
 
         {/* Continuous cinematic amber bleed extending from the portrait into the center */}
-        <div className="absolute top-[15%] right-[5%] w-[1000px] h-[1000px] rounded-full bg-[#bfa184]/20 blur-[250px] mix-blend-screen will-change-transform" />
+        <div className="absolute top-[15%] right-[5%] w-[600px] h-[600px] md:w-[1000px] md:h-[1000px] rounded-full bg-[#bfa184]/10 md:bg-[#bfa184]/20 blur-[100px] md:blur-[250px] mix-blend-screen will-change-transform" />
 
         {/* Deep connective background glow right in the middle */}
-        <div className="absolute top-[35%] left-[30%] w-[800px] h-[800px] rounded-full bg-[#bfa184]/15 blur-[200px] mix-blend-screen will-change-transform" />
+        <div className="absolute top-[35%] left-[30%] w-[400px] h-[400px] md:w-[800px] md:h-[800px] rounded-full bg-[#bfa184]/10 md:bg-[#bfa184]/15 blur-[100px] md:blur-[200px] mix-blend-screen will-change-transform hidden sm:block" />
 
         {/* Film grain / Noise texture */}
         <div
@@ -89,12 +89,12 @@ export function ImageSequenceViewer() {
           unoptimized
           sizes="(max-width: 768px) 100vw, 80vw"
           className="
-            object-contain
-            object-center md:object-right
-            opacity-100
+            object-cover md:object-contain
+            object-[70%_20%] md:object-right
+            opacity-70 md:opacity-100
             mix-blend-lighten
-            [mask-image:radial-gradient(ellipse_at_center,black_40%,rgba(0,0,0,0.5)_70%,transparent_100%)]
-            [-webkit-mask-image:radial-gradient(ellipse_at_center,black_40%,rgba(0,0,0,0.5)_70%,transparent_100%)]
+            [mask-image:radial-gradient(ellipse_at_70%_30%,black_30%,rgba(0,0,0,0.5)_60%,transparent_100%)]
+            [-webkit-mask-image:radial-gradient(ellipse_at_70%_30%,black_30%,rgba(0,0,0,0.5)_60%,transparent_100%)]
             md:[mask-image:radial-gradient(ellipse_at_65%_50%,black_45%,rgba(0,0,0,0.6)_75%,transparent_100%)]
             md:[-webkit-mask-image:radial-gradient(ellipse_at_65%_50%,black_45%,rgba(0,0,0,0.6)_75%,transparent_100%)]
           "
@@ -104,13 +104,13 @@ export function ImageSequenceViewer() {
       {/* FULL SCREEN CINEMATIC OVERLAYS (Crucial for removing vertical seams) */}
       <div className="absolute inset-0 z-20 pointer-events-none">
         {/* Massive soft left haze spanning entire page to blend portrait into text background globally */}
-        <div className="absolute inset-y-0 left-0 w-[55%] bg-gradient-to-r from-[#050505] via-[#050505]/90 to-transparent" />
+        <div className="absolute inset-y-0 left-0 w-[85%] md:w-[55%] bg-gradient-to-r from-[#050505] via-[#050505]/95 md:via-[#050505]/90 to-transparent" />
 
         {/* Ambient atmospheric haze sweeping across the center, lightened to restore face visibility */}
         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#050505]/10 to-transparent" />
 
         {/* Deep bottom cinematic ground fade globally applied, reduced intensity */}
-        <div className="absolute inset-x-0 bottom-0 h-[30%] bg-gradient-to-t from-[#050505] via-[#050505]/60 to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 h-[40%] md:h-[30%] bg-gradient-to-t from-[#050505] via-[#050505]/80 md:via-[#050505]/60 to-transparent" />
 
         {/* Top ceiling fade globally applied, reduced intensity */}
         <div className="absolute inset-x-0 top-0 h-[20%] bg-gradient-to-b from-[#050505] via-[#050505]/50 to-transparent" />
@@ -131,6 +131,7 @@ export function ImageSequenceViewer() {
             alt=""
             decoding="async"
             fetchPriority="low"
+            loading="lazy"
           />
         ))}
       </div>
