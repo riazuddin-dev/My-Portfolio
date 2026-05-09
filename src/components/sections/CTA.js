@@ -1,20 +1,19 @@
 "use client";
 
-import { motion, useTransform } from "framer-motion";
-import { useScrollytelling } from "../ScrollytellingProvider";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 import Link from "next/link";
 
 export function CTA() {
-  const { smoothProgress } = useScrollytelling();
-
-  const opacity = useTransform(smoothProgress, [0.9, 0.98], [0, 1]);
-  const pointerEvents = useTransform(smoothProgress, (p) => (p > 0.85) ? "auto" : "none");
-  const y = useTransform(smoothProgress, [0.9, 1], ["15%", "0%"]);
+  const { ref, inView } = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
 
   return (
-    <motion.section 
-      style={{ opacity, y, pointerEvents }}
-      className="fixed inset-0 flex flex-col items-center justify-center z-20"
+    <section 
+      ref={ref}
+      className={`relative w-full min-h-[50vh] flex flex-col items-center justify-center z-20 transition-all duration-1000 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
     >
       <div className="text-center max-w-2xl px-6">
         <h2 className="text-4xl md:text-5xl font-light tracking-tight text-foreground mb-4">
@@ -47,6 +46,6 @@ export function CTA() {
           </a>
         </div>
       </div>
-    </motion.section>
+    </section>
   );
 }

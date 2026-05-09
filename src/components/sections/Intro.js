@@ -1,8 +1,8 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { motion, useTransform } from "framer-motion";
-import { useScrollytelling } from "../ScrollytellingProvider";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 import { SocialLinks } from "../SocialLinks";
 
 const staggerContainer = {
@@ -17,13 +17,12 @@ const staggerContainer = {
 };
 
 const fadeUpLine = {
-  hidden: { opacity: 0, y: 30, filter: "blur(4px)" },
+  hidden: { opacity: 0, y: 30 },
   visible: {
     opacity: 1,
     y: 0,
-    filter: "blur(0px)",
     transition: {
-      duration: 1.4,
+      duration: 1.2,
       ease: [0.16, 1, 0.3, 1]
     }
   }
@@ -41,19 +40,7 @@ const textShimmer = {
   }
 };
 
-const textBloom = {
-  hidden: { opacity: 0.3, filter: "blur(15px)" },
-  visible: {
-    opacity: 0.7,
-    filter: "blur(25px)",
-    transition: {
-      duration: 3,
-      repeat: Infinity,
-      repeatType: "reverse",
-      ease: "easeInOut"
-    }
-  }
-};
+// textBloom removed for performance
 
 const waveAnimation = {
   hidden: { rotate: 0 },
@@ -149,52 +136,53 @@ function TypewriterEffect() {
 }
 
 export function Intro() {
-  const { smoothProgress } = useScrollytelling();
+  const { ref, inView } = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
 
-  // Range: 0 to 0.2
-  const opacity = useTransform(smoothProgress, [0, 0.15, 0.2], [1, 1, 0]);
-  const pointerEvents = useTransform(smoothProgress, (p) => (p < 0.18) ? "auto" : "none");
-  const y = useTransform(smoothProgress, [0, 0.2], ["0%", "-5%"]);
-
-  // Helper to scroll to specific section
-  const scrollTo = (vhMultiplier) => {
-    window.scrollTo({
-      top: window.innerHeight * vhMultiplier,
-      behavior: "smooth"
-    });
+  // Helper to scroll to specific section exactly
+  const scrollTo = (sectionId) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth", block: "start" });
+    } else {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
   };
 
   return (
-    <motion.section
-      style={{ opacity, y, pointerEvents }}
-      className="fixed inset-0 flex flex-col z-10"
+    <section
+      id="intro"
+      ref={ref}
+      className={`relative w-full min-h-screen flex flex-col z-10 transition-all duration-1000 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
     >
       {/* Top Navigation */}
       <nav className="w-full px-12 md:px-20 py-8 flex justify-between items-center">
         <div
-          onClick={() => scrollTo(0)}
+          onClick={() => scrollTo("intro")}
           className="font-sans text-[20px] tracking-wide font-semibold text-[#c49a6c] cursor-pointer drop-shadow-[0_0_8px_rgba(196,154,108,0.5)]"
         >
           RU.
         </div>
 
         <div className="absolute left-1/2 -translate-x-1/2 hidden md:flex gap-12 lg:gap-16 font-mono text-[9px] tracking-[0.2em] font-medium uppercase text-white/50">
-          <button onClick={() => scrollTo(1)} className="hover:text-white transition-colors cursor-pointer">
+          <button onClick={() => scrollTo("about")} className="hover:text-white transition-colors cursor-pointer">
             ABOUT
           </button>
-          <button onClick={() => scrollTo(2)} className="hover:text-white transition-colors cursor-pointer">
+          <button onClick={() => scrollTo("skills")} className="hover:text-white transition-colors cursor-pointer">
             SKILLS
           </button>
-          <button onClick={() => scrollTo(3)} className="hover:text-white transition-colors cursor-pointer">
+          <button onClick={() => scrollTo("projects")} className="hover:text-white transition-colors cursor-pointer">
             PROJECTS
           </button>
-          <button onClick={() => scrollTo(4)} className="hover:text-white transition-colors cursor-pointer">
+          <button onClick={() => scrollTo("contact")} className="hover:text-white transition-colors cursor-pointer">
             CONTACT
           </button>
         </div>
 
         <button
-          onClick={() => scrollTo(4)}
+          onClick={() => scrollTo("contact")}
           className="group relative border border-white/20 rounded-full px-6 py-2.5 font-mono text-[9px] tracking-[0.2em] font-medium uppercase text-white/70 hover:border-[#c49a6c]/50 transition-all duration-500 overflow-hidden flex items-center gap-2.5 cursor-pointer"
         >
           <div className="absolute inset-0 bg-gradient-to-r from-[#c49a6c]/0 via-[#c49a6c]/10 to-[#c49a6c]/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -256,7 +244,7 @@ export function Intro() {
                   variants={waveAnimation}
                   initial="hidden"
                   animate="visible"
-                  className="absolute inset-0 bg-[#c49a6c]/20 blur-xl rounded-full origin-bottom-right pointer-events-none z-0"
+                  className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(196,154,108,0.3)_0%,transparent_70%)] rounded-full origin-bottom-right pointer-events-none z-0"
                 />
 
                 {/* Floating Particle Spark */}
@@ -264,57 +252,21 @@ export function Intro() {
                   variants={sparkAnimation}
                   initial="hidden"
                   animate="visible"
-                  className="absolute top-0 right-0 w-1.5 h-1.5 md:w-2 md:h-2 bg-[#d4af37] rounded-full shadow-[0_0_10px_rgba(212,175,55,1)] pointer-events-none z-20"
+                  className="absolute top-0 right-0 w-1.5 h-1.5 md:w-2 md:h-2 bg-[#d4af37] rounded-full pointer-events-none z-20"
                 />
               </div>
               , I&apos;m
             </motion.div>
             <motion.div variants={fadeUpLine} className="text-[2.25rem] sm:text-[3.5rem] md:text-[5rem] lg:text-[5.5rem] font-medium tracking-tight leading-[1.1] font-sans whitespace-nowrap relative">
               
-              {/* Backing Volumetric Haze Layer */}
-              <motion.span
-                variants={textShimmer}
-                initial="hidden"
-                animate="visible"
-                className="absolute inset-0 z-0 hidden md:block"
-                style={{
-                  backgroundImage: "linear-gradient(to right, #b87333, #d4af37, #fff4e6, #ffcba4, #c87d46, #b87333)",
-                  backgroundSize: "200% auto",
-                  filter: "blur(24px)",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                  color: "transparent",
-                  opacity: 0.8
-                }}
-                aria-hidden="true"
-              >
-                MD RIAZ UDDIN
-              </motion.span>
-              
-              {/* Pulsing Cinematic Light Reflection */}
-              <motion.span
-                variants={textBloom}
-                initial="hidden"
-                animate="visible"
-                className="absolute inset-0 z-0 mix-blend-screen hidden md:block"
-                style={{
-                  backgroundImage: "linear-gradient(to right, #d4af37, #ffffff, #d4af37)",
-                  backgroundSize: "200% auto",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                  color: "transparent",
-                }}
-                aria-hidden="true"
-              >
-                MD RIAZ UDDIN
-              </motion.span>
+              {/* Removed volumetric haze and blooming text layer for performance */}
 
               {/* Main Shimmering Typography Layer */}
               <motion.span
                 variants={textShimmer}
                 initial="hidden"
                 animate="visible"
-                className="relative inline-block z-10 drop-shadow-[0_0_8px_rgba(196,154,108,0.5)] md:drop-shadow-[0_0_5px_rgba(255,244,230,0.4)]"
+                className="relative inline-block z-10"
                 style={{
                   backgroundImage: "linear-gradient(to right, #b87333, #d4af37, #fff4e6, #ffcba4, #c87d46, #b87333)",
                   backgroundSize: "200% auto",
@@ -335,7 +287,7 @@ export function Intro() {
 
           <motion.div variants={fadeUpLine} className="mt-14">
             <button
-              onClick={() => scrollTo(1)}
+              onClick={() => scrollTo("about")}
               className="group relative border border-white/20 rounded-full px-8 py-3.5 font-mono text-[10px] tracking-[0.2em] font-medium uppercase text-white hover:border-[#c49a6c]/50 transition-all duration-500 overflow-hidden flex items-center gap-4 cursor-pointer w-fit"
             >
               <div className="absolute inset-0 bg-gradient-to-r from-[#c49a6c]/0 via-[#c49a6c]/10 to-[#c49a6c]/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -368,6 +320,6 @@ export function Intro() {
       <div className="absolute right-12 md:right-20 bottom-12 z-20 pointer-events-auto">
         <SocialLinks iconSize="w-10 h-10" />
       </div>
-    </motion.section>
+    </section>
   );
 }

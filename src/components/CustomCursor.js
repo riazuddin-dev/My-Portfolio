@@ -18,17 +18,7 @@ export function CustomCursor() {
   const ringY = useSpring(mouseY, springConfigRing);
 
   const springConfigStreak = { damping: 40, stiffness: 120, mass: 0.8 };
-  const streakX = useSpring(mouseX, springConfigStreak);
-  const streakY = useSpring(mouseY, springConfigStreak);
-
-  const trail1X = useSpring(mouseX, { damping: 37, stiffness: 250, mass: 0.3 });
-  const trail1Y = useSpring(mouseY, { damping: 37, stiffness: 250, mass: 0.3 });
-  
-  const trail2X = useSpring(mouseX, { damping: 49, stiffness: 250, mass: 0.5 });
-  const trail2Y = useSpring(mouseY, { damping: 49, stiffness: 250, mass: 0.5 });
-
-  const trail3X = useSpring(mouseX, { damping: 61, stiffness: 250, mass: 0.7 });
-  const trail3Y = useSpring(mouseY, { damping: 61, stiffness: 250, mass: 0.7 });
+  // Removed streaks and trails for better performance
 
   useEffect(() => {
     // Check if touch device
@@ -109,45 +99,20 @@ export function CustomCursor() {
           >
             {/* Soft Ambient Glow inside ring */}
             <motion.div 
-              className="absolute inset-0 rounded-full bg-[#c49a6c] blur-[12px]"
+              className="absolute inset-0 rounded-full bg-[#c49a6c] blur-[6px]"
               style={{ willChange: "transform, opacity" }}
               animate={{
-                opacity: isHovering ? 0.6 : 0.15,
-                scale: isHovering ? 1.2 : 1
+                opacity: isHovering ? 0.4 : 0.1,
+                scale: isHovering ? 1.1 : 1
               }}
             />
           </motion.div>
 
-          {/* Smooth Light Streak Motion Blur */}
-          <motion.div
-            className="fixed top-[-16px] left-[-16px] w-8 h-8 rounded-full bg-[#c49a6c]/20 blur-[8px] mix-blend-screen pointer-events-none"
-            style={{ x: streakX, y: streakY, willChange: "transform, opacity" }}
-            animate={{
-              scale: isHovering ? 0 : 1,
-              opacity: isHovering ? 0 : 1
-            }}
-          />
-
-          {/* Cascading Amber Particle Trails */}
-          <motion.div
-            className="fixed top-[-3px] left-[-3px] w-1.5 h-1.5 rounded-full bg-[#d4af37] mix-blend-screen shadow-[0_0_8px_rgba(212,175,55,0.8)] pointer-events-none"
-            style={{ x: trail1X, y: trail1Y, willChange: "transform, opacity" }}
-            animate={{ opacity: isHovering ? 0 : 0.6, scale: isHovering ? 0 : 0.8 }}
-          />
-          <motion.div
-            className="fixed top-[-3px] left-[-3px] w-1.5 h-1.5 rounded-full bg-[#d4af37] mix-blend-screen shadow-[0_0_8px_rgba(212,175,55,0.8)] pointer-events-none"
-            style={{ x: trail2X, y: trail2Y, willChange: "transform, opacity" }}
-            animate={{ opacity: isHovering ? 0 : 0.4, scale: isHovering ? 0 : 0.6 }}
-          />
-          <motion.div
-            className="fixed top-[-3px] left-[-3px] w-1.5 h-1.5 rounded-full bg-[#d4af37] mix-blend-screen shadow-[0_0_8px_rgba(212,175,55,0.8)] pointer-events-none"
-            style={{ x: trail3X, y: trail3Y, willChange: "transform, opacity" }}
-            animate={{ opacity: isHovering ? 0 : 0.2, scale: isHovering ? 0 : 0.4 }}
-          />
+          {/* Removed streak and cascading trails for performance */}
 
           {/* Inner Sharp Dot */}
           <motion.div
-            className="fixed top-[-4px] left-[-4px] w-2 h-2 rounded-full bg-[#c49a6c] shadow-[0_0_15px_rgba(196,154,108,1)] mix-blend-screen"
+            className="fixed top-[-4px] left-[-4px] w-2 h-2 rounded-full bg-[#c49a6c] shadow-[0_0_8px_rgba(196,154,108,0.8)]"
             style={{ x: mouseX, y: mouseY, willChange: "transform, opacity" }}
             animate={{
               scale: isHovering ? 0 : 1,

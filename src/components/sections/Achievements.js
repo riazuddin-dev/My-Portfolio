@@ -1,18 +1,18 @@
 "use client";
 
-import { motion, useTransform } from "framer-motion";
-import { useScrollytelling } from "../ScrollytellingProvider";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
 export function Achievements() {
-  const { smoothProgress } = useScrollytelling();
-
-  const opacity = useTransform(smoothProgress, [0.72, 0.78, 0.9, 0.95], [0, 1, 1, 0]);
-  const scale = useTransform(smoothProgress, [0.72, 0.95], [0.97, 1.03]);
+  const { ref, inView } = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
 
   return (
-    <motion.section 
-      style={{ opacity, scale }}
-      className="fixed inset-0 flex flex-col items-center justify-center z-10 pointer-events-none"
+    <section 
+      ref={ref}
+      className={`relative w-full min-h-[50vh] flex flex-col items-center justify-center z-10 pointer-events-none transition-all duration-1000 ${inView ? "opacity-100 scale-100" : "opacity-0 scale-95"}`}
     >
       <div className="text-center max-w-3xl px-6">
         <h2 className="text-4xl md:text-6xl font-light tracking-tight text-foreground mb-4">
@@ -37,6 +37,6 @@ export function Achievements() {
           </div>
         </div>
       </div>
-    </motion.section>
+    </section>
   );
 }

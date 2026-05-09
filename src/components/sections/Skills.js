@@ -1,6 +1,6 @@
 "use client";
-import { motion, useTransform } from "framer-motion";
-import { useScrollytelling } from "../ScrollytellingProvider";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 const staggerContainer = {
   hidden: { opacity: 0 },
   visible: {
@@ -13,11 +13,10 @@ const staggerContainer = {
 };
 
 const fadeUp = {
-  hidden: { opacity: 0, y: 30, filter: "blur(4px)" },
+  hidden: { opacity: 0, y: 30 },
   visible: {
     opacity: 1,
     y: 0,
-    filter: "blur(0px)",
     transition: {
       duration: 1.2,
       ease: [0.16, 1, 0.3, 1],
@@ -40,11 +39,10 @@ const staggerGroup = {
 };
 
 const fadeUpBadge = {
-  hidden: { opacity: 0, y: 15, filter: "blur(2px)" },
+  hidden: { opacity: 0, y: 15 },
   visible: {
     opacity: 1,
     y: 0,
-    filter: "blur(0px)",
     transition: {
       duration: 0.9,
       ease: [0.16, 1, 0.3, 1],
@@ -243,23 +241,16 @@ const renderSkillIcon = (skill) => {
 };
 
 export function Skills() {
-  const { smoothProgress } = useScrollytelling();
-
-  // Range: 0.38 to 0.58
-  const opacity = useTransform(
-    smoothProgress,
-    [0.38, 0.45, 0.52, 0.58],
-    [0, 1, 1, 0],
-  );
-  const pointerEvents = useTransform(smoothProgress, (p) =>
-    p > 0.35 && p < 0.6 ? "auto" : "none",
-  );
-  const y = useTransform(smoothProgress, [0.38, 0.58], ["5%", "-5%"]);
+  const { ref, inView } = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
 
   return (
-    <motion.section
-      style={{ opacity, y, pointerEvents }}
-      className="fixed inset-0 flex flex-col justify-center z-10 px-12 md:px-20"
+    <section
+      id="skills"
+      ref={ref}
+      className={`relative w-full min-h-screen flex flex-col justify-center z-10 px-12 md:px-20 transition-all duration-1000 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
     >
       {/* Cinematic Background Lines / Radar Effect */}
       <div className="absolute top-0 right-0 bottom-0 w-[50%] pointer-events-none overflow-hidden opacity-30 mix-blend-screen hidden lg:block">
@@ -297,7 +288,7 @@ export function Skills() {
             className="text-[2.25rem] sm:text-[3rem] md:text-[4rem] font-medium tracking-tight text-white leading-[1.1] mb-4"
           >
             SKILLS THAT POWER <br />
-            <span className="font-medium text-[#c49a6c] drop-shadow-[0_0_20px_rgba(196,154,108,0.5)]">
+            <span className="font-medium text-[#c49a6c]">
               MY CREATIONS.
             </span>
           </motion.h2>
@@ -332,7 +323,7 @@ export function Skills() {
                     <motion.div
                       key={skillIndex}
                       variants={fadeUpBadge}
-                      className="group relative flex items-center gap-2.5 md:gap-3.5 bg-[#0a0a0a]/60 backdrop-blur-md border border-white/5 border-b-[#c49a6c]/30 px-3 md:px-5 py-2.5 md:py-3 rounded-xl hover:border-white/10 hover:border-b-[#c49a6c]/80 hover:bg-[#c49a6c]/10 transition-all duration-500 hover:-translate-y-1 shadow-[0_4px_15px_rgba(0,0,0,0.3)] hover:shadow-[0_8px_25px_rgba(196,154,108,0.25)] cursor-default overflow-hidden w-full md:w-auto"
+                      className="group relative flex items-center gap-2.5 md:gap-3.5 bg-[#0a0a0a]/90 border border-white/5 border-b-[#c49a6c]/30 px-3 md:px-5 py-2.5 md:py-3 rounded-xl hover:border-white/10 hover:border-b-[#c49a6c]/80 hover:bg-[#c49a6c]/10 transition-all duration-500 hover:-translate-y-1 shadow-sm hover:shadow-[#c49a6c]/20 cursor-default overflow-hidden w-full md:w-auto"
                     >
                       {/* Premium Glass Reflection Effect */}
                       <div className="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/5 to-white/0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 transform group-hover:translate-x-full -translate-x-full hidden md:block" />
@@ -351,6 +342,6 @@ export function Skills() {
           </div>
         </motion.div>
       </div>
-    </motion.section>
+    </section>
   );
 }

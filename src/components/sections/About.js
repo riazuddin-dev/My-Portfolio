@@ -1,7 +1,7 @@
 "use client";
 
-import { motion, useTransform } from "framer-motion";
-import { useScrollytelling } from "../ScrollytellingProvider";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
 const staggerContainer = {
   hidden: { opacity: 0 },
@@ -15,30 +15,28 @@ const staggerContainer = {
 };
 
 const fadeUp = {
-  hidden: { opacity: 0, y: 30, filter: "blur(4px)" },
+  hidden: { opacity: 0, y: 30 },
   visible: {
     opacity: 1,
     y: 0,
-    filter: "blur(0px)",
     transition: {
-      duration: 1.4,
+      duration: 1.2,
       ease: [0.16, 1, 0.3, 1]
     }
   }
 };
 
 export function About() {
-  const { smoothProgress } = useScrollytelling();
-
-  // Range: 0.18 to 0.38
-  const opacity = useTransform(smoothProgress, [0.18, 0.25, 0.32, 0.38], [0, 1, 1, 0]);
-  const y = useTransform(smoothProgress, [0.18, 0.38], ["5%", "-5%"]);
-  const pointerEvents = useTransform(smoothProgress, (p) => (p > 0.15 && p < 0.4) ? "auto" : "none");
+  const { ref, inView } = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
 
   return (
-    <motion.section
-      style={{ opacity, y, pointerEvents }}
-      className="fixed inset-0 flex flex-col justify-center z-10 px-6 md:px-12 lg:px-20"
+    <section
+      id="about"
+      ref={ref}
+      className={`relative w-full min-h-screen flex flex-col justify-center z-10 px-6 md:px-12 lg:px-20 transition-all duration-1000 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
     >
       <div className="flex-1 flex w-full relative items-center justify-between z-10">
 
@@ -67,7 +65,7 @@ export function About() {
 
             <motion.h2 variants={fadeUp} className="text-[2.25rem] sm:text-[3rem] lg:text-[4rem] font-light tracking-tight text-white leading-[1.05] mb-6 sm:mb-8">
               Crafting <br className="hidden md:block" /> experiences <br />
-              that <span className="font-medium text-[#c49a6c] drop-shadow-[0_0_20px_rgba(196,154,108,0.5)]">connect.</span>
+              that <span className="font-medium text-[#c49a6c]">connect.</span>
             </motion.h2>
 
             <motion.p variants={fadeUp} className="text-white/60 font-light text-[14px] md:text-[15px] leading-[1.9] max-w-md mb-10 tracking-wide">
@@ -75,7 +73,7 @@ export function About() {
             </motion.p>
 
             <motion.div variants={fadeUp} className="relative w-fit mt-2">
-              <div className="font-mono text-3xl text-[#c49a6c] opacity-90 drop-shadow-[0_0_15px_rgba(196,154,108,0.4)]" style={{ fontFamily: "'Cedarville Cursive', cursive" }}>
+              <div className="font-mono text-3xl text-[#c49a6c] opacity-90" style={{ fontFamily: "'Cedarville Cursive', cursive" }}>
                 MD Riaz Uddin
               </div>
               <div className="absolute -bottom-2 left-0 w-full h-[1px] bg-gradient-to-r from-[#c49a6c]/60 to-transparent" />
@@ -91,7 +89,7 @@ export function About() {
           >
             {/* Concentric Radar Rings (Background) */}
             <div className="absolute top-1/2 -right-[60%] -translate-y-1/2 w-[600px] h-[600px] pointer-events-none z-0 hidden lg:block overflow-hidden">
-              <div className="absolute inset-0 opacity-40 mix-blend-screen transition-opacity duration-1000 group-hover:opacity-70">
+              <div className="absolute inset-0 opacity-40 transition-opacity duration-1000 group-hover:opacity-70">
                 <div className="absolute top-1/2 left-0 -translate-y-1/2 w-[200px] h-[200px] rounded-full border border-dashed border-[#c49a6c]/60 border-l-transparent animate-[spin_40s_linear_infinite]" />
                 <div className="absolute top-1/2 left-[-50px] -translate-y-1/2 w-[300px] h-[300px] rounded-full border border-dashed border-[#c49a6c]/40 border-l-transparent" />
                 <div className="absolute top-1/2 left-[-100px] -translate-y-1/2 w-[400px] h-[400px] rounded-full border border-[#c49a6c]/20 border-l-transparent animate-[spin_60s_linear_infinite_reverse]" />
@@ -104,15 +102,14 @@ export function About() {
               </div>
             </div>
 
-            {/* Subtle Floating Particles */}
+            {/* Subtle Floating Particles - Simplified for performance */}
             <div className="absolute -inset-10 pointer-events-none z-0 hidden md:block">
-              <motion.div animate={{ y: [-10, 10, -10], opacity: [0.3, 0.8, 0.3] }} transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }} className="absolute top-[10%] -left-[5%] w-1 h-1 bg-[#c49a6c] rounded-full shadow-[0_0_10px_rgba(196,154,108,1)]" />
-              <motion.div animate={{ y: [15, -15, 15], opacity: [0.2, 0.6, 0.2] }} transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }} className="absolute bottom-[20%] -right-[10%] w-1.5 h-1.5 bg-[#c49a6c] rounded-full shadow-[0_0_12px_rgba(196,154,108,1)]" />
-              <motion.div animate={{ y: [-5, 5, -5], opacity: [0.5, 1, 0.5] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }} className="absolute -top-[5%] right-[20%] w-[2px] h-[2px] bg-white/60 rounded-full shadow-[0_0_8px_rgba(255,255,255,0.8)]" />
+              <motion.div animate={{ y: [-5, 5, -5], opacity: [0.3, 0.6, 0.3] }} transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }} className="absolute top-[10%] -left-[5%] w-1 h-1 bg-[#c49a6c] rounded-full" />
+              <motion.div animate={{ y: [8, -8, 8], opacity: [0.2, 0.5, 0.2] }} transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }} className="absolute bottom-[20%] -right-[10%] w-1.5 h-1.5 bg-[#c49a6c] rounded-full" />
             </div>
 
             {/* Premium Glassmorphism Card */}
-            <div style={{ willChange: "transform, box-shadow" }} className="relative z-10 bg-[#050505]/80 backdrop-blur-md border border-white/5 rounded-[24px] p-8 md:p-10 shadow-[0_0_20px_rgba(0,0,0,0.8),inset_0_0_40px_rgba(196,154,108,0.03)] transition-all duration-500 group-hover:border-[#c49a6c]/30 group-hover:shadow-[0_0_30px_rgba(196,154,108,0.1),inset_0_0_50px_rgba(196,154,108,0.05)] group-hover:-translate-y-1 overflow-hidden w-full">
+            <div style={{ willChange: "transform, opacity" }} className="relative z-10 bg-[#050505]/95 border border-white/5 rounded-[24px] p-8 md:p-10 shadow-lg transition-all duration-500 group-hover:border-[#c49a6c]/30 group-hover:shadow-[#c49a6c]/10 group-hover:-translate-y-1 overflow-hidden w-full">
 
               {/* Internal Glass Sweep */}
               <div className="absolute inset-0 bg-gradient-to-tr from-white/0 via-[#c49a6c]/5 to-white/0 opacity-0 group-hover:opacity-100 transition-all duration-1000 ease-out transform group-hover:translate-x-[150%] -translate-x-[150%] pointer-events-none" />
@@ -121,10 +118,10 @@ export function About() {
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150%] h-[150%] bg-[radial-gradient(circle_at_center,rgba(196,154,108,0.05)_0%,transparent_50%)] opacity-50 group-hover:opacity-100 transition-opacity duration-1000 pointer-events-none mix-blend-screen" />
 
               {/* Glowing Corner Accents */}
-              <div className="absolute top-0 left-0 w-12 h-12 border-t-[1.5px] border-l-[1.5px] border-[#c49a6c] rounded-tl-[24px] opacity-0 group-hover:opacity-50 transition-all duration-700 transform -translate-x-2 -translate-y-2 group-hover:translate-x-0 group-hover:translate-y-0 pointer-events-none drop-shadow-[0_0_10px_rgba(196,154,108,0.5)]" />
-              <div className="absolute top-0 right-0 w-12 h-12 border-t-[1.5px] border-r-[1.5px] border-[#c49a6c] rounded-tr-[24px] opacity-0 group-hover:opacity-50 transition-all duration-700 transform translate-x-2 -translate-y-2 group-hover:translate-x-0 group-hover:translate-y-0 pointer-events-none drop-shadow-[0_0_10px_rgba(196,154,108,0.5)]" />
-              <div className="absolute bottom-0 left-0 w-12 h-12 border-b-[1.5px] border-l-[1.5px] border-[#c49a6c] rounded-bl-[24px] opacity-0 group-hover:opacity-50 transition-all duration-700 transform -translate-x-2 translate-y-2 group-hover:translate-x-0 group-hover:translate-y-0 pointer-events-none drop-shadow-[0_0_10px_rgba(196,154,108,0.5)]" />
-              <div className="absolute bottom-0 right-0 w-12 h-12 border-b-[1.5px] border-r-[1.5px] border-[#c49a6c] rounded-br-[24px] opacity-0 group-hover:opacity-50 transition-all duration-700 transform translate-x-2 translate-y-2 group-hover:translate-x-0 group-hover:translate-y-0 pointer-events-none drop-shadow-[0_0_10px_rgba(196,154,108,0.5)]" />
+              <div className="absolute top-0 left-0 w-12 h-12 border-t-[1.5px] border-l-[1.5px] border-[#c49a6c] rounded-tl-[24px] opacity-0 group-hover:opacity-50 transition-all duration-700 transform -translate-x-2 -translate-y-2 group-hover:translate-x-0 group-hover:translate-y-0 pointer-events-none" />
+              <div className="absolute top-0 right-0 w-12 h-12 border-t-[1.5px] border-r-[1.5px] border-[#c49a6c] rounded-tr-[24px] opacity-0 group-hover:opacity-50 transition-all duration-700 transform translate-x-2 -translate-y-2 group-hover:translate-x-0 group-hover:translate-y-0 pointer-events-none" />
+              <div className="absolute bottom-0 left-0 w-12 h-12 border-b-[1.5px] border-l-[1.5px] border-[#c49a6c] rounded-bl-[24px] opacity-0 group-hover:opacity-50 transition-all duration-700 transform -translate-x-2 translate-y-2 group-hover:translate-x-0 group-hover:translate-y-0 pointer-events-none" />
+              <div className="absolute bottom-0 right-0 w-12 h-12 border-b-[1.5px] border-r-[1.5px] border-[#c49a6c] rounded-br-[24px] opacity-0 group-hover:opacity-50 transition-all duration-700 transform translate-x-2 translate-y-2 group-hover:translate-x-0 group-hover:translate-y-0 pointer-events-none" />
 
               {/* Glowing Top & Bottom Borders */}
               <div className="absolute top-0 left-1/4 right-1/4 h-[1px] bg-gradient-to-r from-transparent via-[#c49a6c] to-transparent opacity-40 group-hover:opacity-80 transition-opacity duration-700 shadow-[0_0_20px_rgba(196,154,108,1)]" />
@@ -201,6 +198,6 @@ export function About() {
           </motion.div>
         </div>
       </div>
-    </motion.section>
+    </section>
   );
 }

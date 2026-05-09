@@ -1,7 +1,7 @@
 "use client";
 
-import { motion, useTransform } from "framer-motion";
-import { useScrollytelling } from "../ScrollytellingProvider";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 import { SocialLinks } from "../SocialLinks";
 
 const staggerContainer = {
@@ -16,30 +16,28 @@ const staggerContainer = {
 };
 
 const fadeUp = {
-  hidden: { opacity: 0, y: 30, filter: "blur(4px)" },
+  hidden: { opacity: 0, y: 30 },
   visible: {
     opacity: 1,
     y: 0,
-    filter: "blur(0px)",
     transition: {
-      duration: 1.4,
+      duration: 1.2,
       ease: [0.16, 1, 0.3, 1]
     }
   }
 };
 
 export function Contact() {
-  const { smoothProgress } = useScrollytelling();
-
-  // Range: 0.78 to 1.0
-  const opacity = useTransform(smoothProgress, [0.78, 0.85], [0, 1]);
-  const y = useTransform(smoothProgress, [0.78, 1], ["5%", "0%"]);
-  const pointerEvents = useTransform(smoothProgress, (p) => p > 0.8 ? "auto" : "none");
+  const { ref, inView } = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
 
   return (
-    <motion.section
-      style={{ opacity, y, pointerEvents }}
-      className="fixed inset-0 flex flex-col justify-center z-20 px-6 md:px-12 lg:px-20"
+    <section
+      id="contact"
+      ref={ref}
+      className={`relative w-full min-h-screen flex flex-col justify-center z-20 px-6 md:px-12 lg:px-20 py-20 transition-all duration-1000 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
     >
 
       <div className="flex-1 flex w-full relative items-center justify-center z-10">
@@ -70,7 +68,7 @@ export function Contact() {
 
             <motion.h2 variants={fadeUp} className="text-[2.25rem] sm:text-[3rem] lg:text-[4rem] font-light tracking-tight text-white leading-[1.05] mb-6 sm:mb-8">
               Have a project <br />
-              <span className="font-medium text-[#c49a6c] drop-shadow-[0_0_20px_rgba(196,154,108,0.5)]">in mind?</span>
+              <span className="font-medium text-[#c49a6c]">in mind?</span>
             </motion.h2>
 
             {/* Glowing Divider Line */}
@@ -120,24 +118,16 @@ export function Contact() {
             animate="visible"
             className="relative w-full max-w-[600px] shrink-0 z-20 group perspective-1000 mt-8 md:mt-12 lg:mt-0 pb-16 md:pb-0"
           >
-            {/* Soft Glow Behind Form */}
-            <div style={{ willChange: "opacity" }} className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[110%] h-[110%] bg-[#c49a6c]/5 blur-[40px] md:blur-[80px] rounded-[30px] pointer-events-none z-0 transition-opacity duration-1000 group-hover:opacity-100 opacity-50 hidden md:block" />
-
-            {/* Concentric Radar Rings (Background) */}
+            {/* Concentric Radar Rings (Background) - Simplified */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] pointer-events-none z-0 hidden lg:block overflow-hidden">
-              <div className="absolute inset-0 opacity-20 mix-blend-screen transition-opacity duration-1000 group-hover:opacity-50">
+              <div className="absolute inset-0 opacity-20 transition-opacity duration-1000 group-hover:opacity-40">
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] h-[350px] rounded-full border border-dashed border-[#c49a6c]/50 border-b-transparent animate-[spin_40s_linear_infinite]" />
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full border border-dashed border-[#c49a6c]/30 border-t-transparent animate-[spin_60s_linear_infinite_reverse]" />
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] h-[650px] rounded-full border border-dotted border-[#c49a6c]/10" />
-
-                {/* Glowing Nodes on Rings */}
-                <div className="absolute top-[10%] left-[50%] w-1.5 h-1.5 rounded-full bg-[#c49a6c] shadow-[0_0_10px_rgba(196,154,108,1)]" />
-                <div className="absolute bottom-[20%] right-[30%] w-2 h-2 rounded-full bg-[#c49a6c] shadow-[0_0_15px_rgba(196,154,108,1)]" />
               </div>
             </div>
 
             {/* Premium Glassmorphism Card */}
-            <div style={{ willChange: "transform, box-shadow" }} className="relative z-10 bg-[#050505]/70 backdrop-blur-md border border-white/5 rounded-[24px] p-8 md:p-10 shadow-[0_20px_30px_rgba(0,0,0,0.5)] transition-all duration-500 group-hover:border-[#c49a6c]/30 group-hover:shadow-[0_20px_40px_rgba(196,154,108,0.15)] group-hover:-translate-y-1 w-full">
+            <div style={{ willChange: "transform, opacity" }} className="relative z-10 bg-[#050505]/95 border border-white/5 rounded-[24px] p-8 md:p-10 shadow-lg transition-all duration-500 group-hover:border-[#c49a6c]/30 group-hover:shadow-[#c49a6c]/10 group-hover:-translate-y-1 w-full">
 
               {/* Internal Glass Sweep */}
               <div className="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/5 to-white/0 opacity-0 group-hover:opacity-100 transition-all duration-1000 ease-out transform group-hover:translate-x-[150%] -translate-x-[150%] pointer-events-none" />
@@ -157,7 +147,7 @@ export function Contact() {
                     <input
                       type="text"
                       placeholder="Your Name"
-                      className="w-full bg-[#0a0a0a]/60 backdrop-blur-md border border-white/5 rounded-[12px] pl-14 pr-6 py-4 text-white font-light text-[13px] focus:outline-none focus:border-[#c49a6c]/50 focus:bg-[#111111] transition-all duration-500 placeholder:text-white/20 hover:border-white/10 shadow-inner"
+                      className="w-full bg-[#0a0a0a]/90 border border-white/5 rounded-[12px] pl-14 pr-6 py-4 text-white font-light text-[13px] focus:outline-none focus:border-[#c49a6c]/50 focus:bg-[#111111] transition-all duration-500 placeholder:text-white/20 hover:border-white/10 shadow-inner"
                     />
                   </div>
 
@@ -169,7 +159,7 @@ export function Contact() {
                     <input
                       type="email"
                       placeholder="Your Email"
-                      className="w-full bg-[#0a0a0a]/60 backdrop-blur-md border border-white/5 rounded-[12px] pl-14 pr-6 py-4 text-white font-light text-[13px] focus:outline-none focus:border-[#c49a6c]/50 focus:bg-[#111111] transition-all duration-500 placeholder:text-white/20 hover:border-white/10 shadow-inner"
+                      className="w-full bg-[#0a0a0a]/90 border border-white/5 rounded-[12px] pl-14 pr-6 py-4 text-white font-light text-[13px] focus:outline-none focus:border-[#c49a6c]/50 focus:bg-[#111111] transition-all duration-500 placeholder:text-white/20 hover:border-white/10 shadow-inner"
                     />
                   </div>
                 </div>
@@ -182,7 +172,7 @@ export function Contact() {
                   <input
                     type="text"
                     placeholder="Subject"
-                    className="w-full bg-[#0a0a0a]/60 backdrop-blur-md border border-white/5 rounded-[12px] pl-14 pr-6 py-4 text-white font-light text-[13px] focus:outline-none focus:border-[#c49a6c]/50 focus:bg-[#111111] transition-all duration-500 placeholder:text-white/20 hover:border-white/10 shadow-inner"
+                    className="w-full bg-[#0a0a0a]/90 border border-white/5 rounded-[12px] pl-14 pr-6 py-4 text-white font-light text-[13px] focus:outline-none focus:border-[#c49a6c]/50 focus:bg-[#111111] transition-all duration-500 placeholder:text-white/20 hover:border-white/10 shadow-inner"
                   />
                 </div>
 
@@ -194,7 +184,7 @@ export function Contact() {
                   <textarea
                     placeholder="Your Message"
                     rows="4"
-                    className="w-full bg-[#0a0a0a]/60 backdrop-blur-md border border-white/5 rounded-[12px] pl-14 pr-6 py-4 text-white font-light text-[13px] focus:outline-none focus:border-[#c49a6c]/50 focus:bg-[#111111] transition-all duration-500 placeholder:text-white/20 hover:border-white/10 shadow-inner resize-none"
+                    className="w-full bg-[#0a0a0a]/90 border border-white/5 rounded-[12px] pl-14 pr-6 py-4 text-white font-light text-[13px] focus:outline-none focus:border-[#c49a6c]/50 focus:bg-[#111111] transition-all duration-500 placeholder:text-white/20 hover:border-white/10 shadow-inner resize-none"
                   />
                 </div>
 
@@ -233,15 +223,6 @@ export function Contact() {
         </div>
       </div>
 
-      {/* Footer / Social Layer */}
-      <div className="absolute bottom-8 md:bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-6 md:gap-5 w-full px-6 z-20">
-        <div className="hidden md:block">
-          <SocialLinks iconSize="w-9 h-9" className="gap-6" />
-        </div>
-        <p className="font-mono text-[9px] tracking-[0.25em] text-white/30 uppercase text-center border-t border-white/5 pt-4 w-full max-w-[200px]">
-          © {new Date().getFullYear()} RIAZ UDDIN
-        </p>
-      </div>
-    </motion.section>
+    </section>
   );
 }

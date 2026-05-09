@@ -46,7 +46,7 @@ export function SocialLinks({ className = "", iconSize = "w-11 h-11" }) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: index * 0.1 + 0.5, ease: [0.16, 1, 0.3, 1] }}
-          className={`group relative flex items-center justify-center rounded-full border border-white/10 bg-[#050505]/50 backdrop-blur-md text-white/50 transition-all duration-500 hover:-translate-y-1.5 hover:border-[#c49a6c]/60 hover:bg-[#c49a6c]/10 hover:text-[#c49a6c] hover:shadow-[0_0_25px_rgba(196,154,108,0.25)] ${iconSize}`}
+          className={`group relative flex items-center justify-center rounded-full border border-white/10 bg-transparent text-white/50 transition-all duration-500 hover:-translate-y-1.5 hover:border-[#c49a6c]/60 hover:bg-[#c49a6c]/10 hover:text-[#c49a6c] hover:shadow-[0_0_25px_rgba(196,154,108,0.25)] ${iconSize}`}
         >
           {/* Subtle Inner Glow on Hover */}
           <div className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 bg-[radial-gradient(circle_at_center,rgba(196,154,108,0.15)_0%,transparent_70%)] transition-opacity duration-500 pointer-events-none" />
@@ -57,7 +57,7 @@ export function SocialLinks({ className = "", iconSize = "w-11 h-11" }) {
 
           {/* Elegant Tooltip Reveal */}
           <div className="absolute -bottom-8 opacity-0 group-hover:opacity-100 group-hover:-bottom-10 transition-all duration-500 ease-out pointer-events-none">
-            <span className="font-mono text-[9px] tracking-[0.2em] uppercase text-[#c49a6c] whitespace-nowrap bg-black/90 px-3 py-1.5 rounded-sm border border-[#c49a6c]/30 backdrop-blur-md shadow-[0_0_15px_rgba(0,0,0,0.5)] block">
+            <span className="font-mono text-[9px] tracking-[0.2em] uppercase text-[#c49a6c] whitespace-nowrap bg-[#050505] px-3 py-1.5 rounded-sm border border-[#c49a6c]/30 shadow-lg block">
               {social.name}
             </span>
           </div>

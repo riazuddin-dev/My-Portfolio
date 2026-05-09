@@ -2,10 +2,15 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function Contact() {
+  const [mounted, setMounted] = useState(false);
   const [formState, setFormState] = useState("idle");
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -17,8 +22,15 @@ export default function Contact() {
     }, 1500);
   };
 
+  // Prevent hydration mismatch by rendering a stable placeholder or nothing until mounted
+  if (!mounted) {
+    return (
+      <main className="relative min-h-screen bg-background text-foreground flex flex-col px-6 py-24 md:py-32 items-center opacity-0" />
+    );
+  }
+
   return (
-    <main className="relative min-h-screen bg-background text-foreground flex flex-col px-6 py-24 md:py-32 items-center">
+    <main suppressHydrationWarning className="relative min-h-screen bg-background text-foreground flex flex-col px-6 py-24 md:py-32 items-center">
       <div className="absolute top-8 left-8 z-50">
         <Link href="/" className="font-mono text-sm tracking-widest uppercase opacity-60 hover:opacity-100 transition-opacity">
           ← Back
