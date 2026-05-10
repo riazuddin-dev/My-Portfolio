@@ -13,7 +13,7 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata = {
-  title: "MD RIAZ UDDIN || Frontend Developer",
+  title: "Md Riaz Uddin || Frontend Developer",
   description: "Creative Engineer & Frontend Developer portfolio. Cinematic scrollytelling experience.",
 };
 
