@@ -13,7 +13,7 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata = {
-  title: "Pritam Singh | Frontend Developer",
+  title: "MD RIAZ UDDIN  | Frontend Developer",
   description: "Creative Engineer & Frontend Developer portfolio. Cinematic scrollytelling experience.",
 };
 
