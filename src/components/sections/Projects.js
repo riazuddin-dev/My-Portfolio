@@ -157,7 +157,7 @@ export function Projects() {
               variants={fadeUp}
               className="text-white/60 font-light text-[14px] leading-[1.8] max-w-[280px] tracking-wide mb-10"
             >
-              Featured work across AI, e-commerce, productivity, real estate, and full-stack products — built for clarity and impact.
+              Strongest work first: agentic AI, real estate, job marketplace, adoption, e-commerce, and relationship tools.
             </motion.p>
 
             <motion.a

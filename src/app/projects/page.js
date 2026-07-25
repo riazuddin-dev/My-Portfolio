@@ -93,7 +93,7 @@ export default function Projects() {
             Projects that ship.
           </h1>
           <p className="text-xl md:text-2xl text-foreground-muted font-light max-w-2xl">
-            AI, e-commerce, productivity, real estate, and full-stack products — built for performance and clarity.
+            Best projects first: agentic AI, property, jobs, adoption, e-commerce, and productivity — built for performance and clarity.
           </p>
         </motion.section>
 
