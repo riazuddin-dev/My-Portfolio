@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="800" y2="600" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0c0804"/>
+      <stop offset="0.5" stop-color="#181008"/>
+      <stop offset="1" stop-color="#050505"/>
+    </linearGradient>
+    <radialGradient id="sun" cx="0.5" cy="0.38" r="0.4">
+      <stop stop-color="#f0c080" stop-opacity="0.45"/>
+      <stop offset="0.45" stop-color="#c49a6c" stop-opacity="0.2"/>
+      <stop offset="1" stop-color="#c49a6c" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#bg)"/>
+  <rect width="800" height="600" fill="url(#sun)"/>
+  <!-- sun disk -->
+  <circle cx="400" cy="210" r="48" fill="#c49a6c" fill-opacity="0.2" stroke="#c49a6c" stroke-opacity="0.8" stroke-width="1.5"/>
+  <circle cx="400" cy="210" r="22" fill="#e8c49a" fill-opacity="0.85"/>
+  <!-- rays -->
+  <g stroke="#c49a6c" stroke-opacity="0.4" stroke-width="1.5" stroke-linecap="round">
+    <line x1="400" y1="130" x2="400" y2="150"/>
+    <line x1="400" y1="270" x2="400" y2="290"/>
+    <line x1="320" y1="210" x2="340" y2="210"/>
+    <line x1="460" y1="210" x2="480" y2="210"/>
+    <line x1="345" y1="155" x2="358" y2="168"/>
+    <line x1="442" y1="252" x2="455" y2="265"/>
+    <line x1="455" y1="155" x2="442" y2="168"/>
+    <line x1="358" y1="252" x2="345" y2="265"/>
+  </g>
+  <!-- shopping bag -->
+  <g transform="translate(350 300)">
+    <path d="M10 20 H90 L82 90 H18 Z" fill="#c49a6c" fill-opacity="0.12" stroke="#c49a6c" stroke-opacity="0.75" stroke-width="1.5"/>
+    <path d="M30 20 C30 5 70 5 70 20" fill="none" stroke="#c49a6c" stroke-opacity="0.75" stroke-width="1.5"/>
+  </g>
+  <text x="400" y="480" text-anchor="middle" fill="#c49a6c" font-family="Georgia, serif" font-size="30" letter-spacing="8" opacity="0.95">SUNCART</text>
+  <text x="400" y="512" text-anchor="middle" fill="#ffffff" font-family="monospace" font-size="11" letter-spacing="4" opacity="0.45">E-COMMERCE PLATFORM</text>
+</svg>

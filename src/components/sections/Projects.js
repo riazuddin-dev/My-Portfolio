@@ -18,6 +18,26 @@ const projects = [
   },
   {
     id: "02",
+    title: "SunCart",
+    subtitle: "E-Commerce Platform",
+    description:
+      "A premium e-commerce experience with a refined storefront, seamless product discovery, and a polished checkout journey.",
+    tech: ["E-Commerce", "Next.js", "React"],
+    link: "https://suncart-psi.vercel.app",
+    image: "/projects/suncart-cover.svg",
+  },
+  {
+    id: "03",
+    title: "Keen Keeper",
+    subtitle: "Project Management",
+    description:
+      "A productivity-focused project management app for organizing work, tracking progress, and keeping teams aligned.",
+    tech: ["Productivity", "Full-Stack", "Web App"],
+    link: "https://keen-keeper-project-roan.vercel.app",
+    image: "/projects/keenkeeper.svg",
+  },
+  {
+    id: "04",
     title: "Property Platform",
     subtitle: "Real Estate Platform",
     description:
@@ -27,7 +47,7 @@ const projects = [
     image: "/projects/property.svg",
   },
   {
-    id: "03",
+    id: "05",
     title: "Luminork",
     subtitle: "Full-Stack Application",
     description:
@@ -37,7 +57,7 @@ const projects = [
     image: "/projects/luminork.svg",
   },
   {
-    id: "04",
+    id: "06",
     title: "Pet Adoption Platform",
     subtitle: "Adoption Website",
     description:
@@ -137,7 +157,7 @@ export function Projects() {
               variants={fadeUp}
               className="text-white/60 font-light text-[14px] leading-[1.8] max-w-[280px] tracking-wide mb-10"
             >
-              Featured work across AI systems, real estate, full-stack products, and community platforms — built for clarity and impact.
+              Featured work across AI, e-commerce, productivity, real estate, and full-stack products — built for clarity and impact.
             </motion.p>
 
             <motion.a

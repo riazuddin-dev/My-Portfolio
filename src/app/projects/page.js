@@ -16,6 +16,26 @@ const projects = [
     align: "left",
   },
   {
+    title: "SunCart",
+    subtitle: "E-Commerce Platform",
+    description:
+      "A premium e-commerce experience with a refined storefront, seamless product discovery, and a polished checkout journey designed for conversion.",
+    tags: ["E-Commerce", "Next.js", "React"],
+    link: "https://suncart-psi.vercel.app",
+    image: "/projects/suncart-cover.svg",
+    align: "right",
+  },
+  {
+    title: "Keen Keeper",
+    subtitle: "Project Management",
+    description:
+      "A productivity-focused project management app for organizing work, tracking progress, and keeping teams aligned day to day.",
+    tags: ["Productivity", "Full-Stack", "Web App"],
+    link: "https://keen-keeper-project-roan.vercel.app",
+    image: "/projects/keenkeeper.svg",
+    align: "left",
+  },
+  {
     title: "Property Platform",
     subtitle: "Real Estate Platform",
     description:
@@ -73,7 +93,7 @@ export default function Projects() {
             Projects that ship.
           </h1>
           <p className="text-xl md:text-2xl text-foreground-muted font-light max-w-2xl">
-            AI systems, real estate, full-stack products, and community platforms — built for performance and clarity.
+            AI, e-commerce, productivity, real estate, and full-stack products — built for performance and clarity.
           </p>
         </motion.section>
 
