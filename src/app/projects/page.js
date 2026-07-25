@@ -16,26 +16,6 @@ const projects = [
     align: "left",
   },
   {
-    title: "SunCart",
-    subtitle: "E-Commerce Platform",
-    description:
-      "A premium e-commerce experience with a refined storefront, seamless product discovery, and a polished checkout journey designed for conversion.",
-    tags: ["E-Commerce", "Next.js", "React"],
-    link: "https://suncart-psi.vercel.app",
-    image: "/projects/suncart-cover.svg",
-    align: "right",
-  },
-  {
-    title: "Keen Keeper",
-    subtitle: "Project Management",
-    description:
-      "A productivity-focused project management app for organizing work, tracking progress, and keeping teams aligned day to day.",
-    tags: ["Productivity", "Full-Stack", "Web App"],
-    link: "https://keen-keeper-project-roan.vercel.app",
-    image: "/projects/keenkeeper.svg",
-    align: "left",
-  },
-  {
     title: "Property Platform",
     subtitle: "Real Estate Platform",
     description:
@@ -56,13 +36,33 @@ const projects = [
     align: "left",
   },
   {
-    title: "Pet Adoption Platform",
+    title: "Pet Adoption",
     subtitle: "Adoption Website",
     description:
       "A warm, user-friendly pet adoption site designed to help animals find forever homes through simple discovery and clear calls to action.",
     tags: ["Web App", "Adoption", "UI/UX"],
-    link: "https://petadeption.vercel.app/",
+    link: "https://petadeption.vercel.app",
     image: "/projects/petadoption.svg",
+    align: "right",
+  },
+  {
+    title: "SunCart",
+    subtitle: "E-Commerce Platform",
+    description:
+      "A premium e-commerce experience with a refined storefront, seamless product discovery, and a polished checkout journey designed for conversion.",
+    tags: ["E-Commerce", "Next.js", "React"],
+    link: "https://suncart-psi.vercel.app",
+    image: "/projects/suncart-cover.svg",
+    align: "left",
+  },
+  {
+    title: "Keen Keeper",
+    subtitle: "Project Management",
+    description:
+      "A productivity-focused project management app for organizing work, tracking progress, and keeping teams aligned day to day.",
+    tags: ["Productivity", "Full-Stack", "Web App"],
+    link: "https://keen-keeper-project-roan.vercel.app",
+    image: "/projects/keenkeeper.svg",
     align: "right",
   },
 ];
