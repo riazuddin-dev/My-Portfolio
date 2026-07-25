@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="800" y2="600" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0a0610"/>
+      <stop offset="0.5" stop-color="#12081c"/>
+      <stop offset="1" stop-color="#050505"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="200" y1="100" x2="600" y2="500" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#c49a6c"/>
+      <stop offset="1" stop-color="#8b6a45"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.45" r="0.45">
+      <stop stop-color="#c49a6c" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#c49a6c" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#bg)"/>
+  <rect width="800" height="600" fill="url(#glow)"/>
+  <!-- neural nodes -->
+  <circle cx="400" cy="260" r="28" stroke="url(#gold)" stroke-width="1.5" fill="#c49a6c" fill-opacity="0.12"/>
+  <circle cx="400" cy="260" r="8" fill="#c49a6c"/>
+  <circle cx="280" cy="180" r="6" fill="#c49a6c" fill-opacity="0.85"/>
+  <circle cx="520" cy="180" r="6" fill="#c49a6c" fill-opacity="0.85"/>
+  <circle cx="240" cy="320" r="5" fill="#c49a6c" fill-opacity="0.7"/>
+  <circle cx="560" cy="320" r="5" fill="#c49a6c" fill-opacity="0.7"/>
+  <circle cx="320" cy="400" r="5" fill="#c49a6c" fill-opacity="0.65"/>
+  <circle cx="480" cy="400" r="5" fill="#c49a6c" fill-opacity="0.65"/>
+  <circle cx="400" cy="140" r="5" fill="#c49a6c" fill-opacity="0.8"/>
+  <!-- connections -->
+  <g stroke="#c49a6c" stroke-opacity="0.35" stroke-width="1">
+    <line x1="400" y1="260" x2="280" y2="180"/>
+    <line x1="400" y1="260" x2="520" y2="180"/>
+    <line x1="400" y1="260" x2="240" y2="320"/>
+    <line x1="400" y1="260" x2="560" y2="320"/>
+    <line x1="400" y1="260" x2="320" y2="400"/>
+    <line x1="400" y1="260" x2="480" y2="400"/>
+    <line x1="400" y1="260" x2="400" y2="140"/>
+    <line x1="280" y1="180" x2="400" y2="140"/>
+    <line x1="520" y1="180" x2="400" y2="140"/>
+  </g>
+  <text x="400" y="500" text-anchor="middle" fill="#c49a6c" font-family="Georgia, serif" font-size="28" letter-spacing="6" opacity="0.9">AETHERMIND</text>
+  <text x="400" y="530" text-anchor="middle" fill="#ffffff" font-family="monospace" font-size="11" letter-spacing="4" opacity="0.45">AGENTIC AI · KNOWLEDGE</text>
+</svg>
