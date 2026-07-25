@@ -54,14 +54,40 @@ export default function Contact() {
           <div className="flex flex-col gap-8 text-lg font-light">
             <div>
               <h2 className="text-sm font-mono tracking-widest uppercase text-foreground-muted mb-2">Email</h2>
-              <a href="mailto:hello@example.com" className="hover:text-white transition-colors">hello@example.com</a>
+              <a
+                href="mailto:dev.riazuddin@gmail.com"
+                className="text-white hover:text-[#c49a6c] transition-colors break-all"
+              >
+                dev.riazuddin@gmail.com
+              </a>
             </div>
             <div>
-              <h2 className="text-sm font-mono tracking-widest uppercase text-foreground-muted mb-2">Social</h2>
-              <div className="flex gap-6">
-                <a href="#" className="hover:text-white transition-colors">LinkedIn</a>
-                <a href="#" className="hover:text-white transition-colors">GitHub</a>
-                <a href="#" className="hover:text-white transition-colors">Twitter</a>
+              <h2 className="text-sm font-mono tracking-widest uppercase text-foreground-muted mb-3">Social</h2>
+              <div className="flex flex-col gap-3 text-base">
+                <a
+                  href="https://github.com/riazuddin-dev"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-[#c49a6c] transition-colors"
+                >
+                  GitHub
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/riaz-uddin-istiak/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-[#c49a6c] transition-colors"
+                >
+                  LinkedIn
+                </a>
+                <a
+                  href="https://www.facebook.com/sotter.dishari.98/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-[#c49a6c] transition-colors"
+                >
+                  Facebook
+                </a>
               </div>
             </div>
           </div>

@@ -172,7 +172,12 @@ export function About() {
                   </div>
                   <div className="flex flex-col gap-1.5">
                     <span className="text-[9px] font-mono tracking-[0.3em] uppercase text-[#c49a6c]/80 group-hover/row:text-[#c49a6c] transition-colors duration-300">Email</span>
-                    <span className="text-[15px] text-white/90 font-light tracking-wide group-hover/row:text-white transition-colors duration-300">dev.riazuddin@gmail.com</span>
+                    <a
+                      href="mailto:dev.riazuddin@gmail.com"
+                      className="text-[15px] text-white/90 font-light tracking-wide group-hover/row:text-[#c49a6c] transition-colors duration-300 break-all"
+                    >
+                      dev.riazuddin@gmail.com
+                    </a>
                   </div>
                 </div>
 

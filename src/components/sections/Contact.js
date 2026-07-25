@@ -76,12 +76,33 @@ export function Contact() {
               <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[3px] h-[3px] rounded-full bg-[#c49a6c] shadow-[0_0_10px_rgba(196,154,108,1)]" />
             </motion.div>
 
-            <motion.p variants={fadeUp} className="text-white/60 font-light text-[14px] leading-[1.9] mb-12 tracking-wide">
-              Feel free to send me a message. <br /> I&apos;d love to hear from you!
+            <motion.p variants={fadeUp} className="text-white/60 font-light text-[14px] leading-[1.9] mb-10 tracking-wide">
+              Prefer email or socials? Reach me directly — I usually reply within 24 hours.
             </motion.p>
 
             {/* Info Blocks */}
-            <motion.div variants={fadeUp} className="flex flex-col gap-8">
+            <motion.div variants={fadeUp} className="flex flex-col gap-7">
+              {/* Email — primary contact */}
+              <a
+                href="mailto:dev.riazuddin@gmail.com"
+                className="flex items-start gap-5 group outline-none"
+              >
+                <div className="w-11 h-11 rounded-full border border-[#c49a6c]/30 bg-[#c49a6c]/10 flex items-center justify-center shrink-0 group-hover:border-[#c49a6c]/70 group-hover:shadow-[0_0_15px_rgba(196,154,108,0.25)] transition-all duration-500 text-[#c49a6c]">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                </div>
+                <div className="flex flex-col gap-1 mt-0.5 min-w-0">
+                  <span className="text-[11px] font-mono tracking-[0.25em] uppercase text-[#c49a6c]/90">
+                    Email
+                  </span>
+                  <span className="text-[14px] sm:text-[15px] text-white font-light tracking-wide break-all group-hover:text-[#c49a6c] transition-colors duration-300">
+                    dev.riazuddin@gmail.com
+                  </span>
+                  <span className="text-[12px] text-white/40 font-light">
+                    Click to open Gmail / your mail app
+                  </span>
+                </div>
+              </a>
+
               {/* Quick Response */}
               <div className="flex items-start gap-5 group">
                 <div className="w-11 h-11 rounded-full border border-white/10 flex items-center justify-center shrink-0 group-hover:border-[#c49a6c]/50 group-hover:shadow-[0_0_15px_rgba(196,154,108,0.2)] transition-all duration-500 text-white/40 group-hover:text-[#c49a6c]">
@@ -108,6 +129,13 @@ export function Contact() {
                 </div>
               </a>
 
+              {/* Social links — labeled for clarity */}
+              <div className="pt-2">
+                <p className="text-[11px] font-mono tracking-[0.25em] uppercase text-[#c49a6c]/90 mb-4">
+                  Social
+                </p>
+                <SocialLinks iconSize="w-11 h-11" showLabels />
+              </div>
             </motion.div>
           </motion.div>
 
